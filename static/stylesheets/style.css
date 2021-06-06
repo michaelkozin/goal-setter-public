@@ -55,7 +55,6 @@ input:valid+span:after {
 #login-card {
     display: flex;
     align-items: center;
-    width: 80rem;
    /* min-height: 100%; */
     flex-direction: row;
     position: fixed; 
@@ -85,6 +84,12 @@ input:valid+span:after {
     max-height: 30rem;
 }
 
+@media screen and (max-width: 800px) {
+    #login-card-image {
+        display: none;
+        }
+  }
+  
 
 
 #login-card img {

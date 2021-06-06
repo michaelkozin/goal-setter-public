@@ -14,6 +14,7 @@ from flask import (Flask, render_template, abort, session
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+app.secret_key = secret_key
 
 @app.before_request
 def _db_connect():
@@ -341,7 +342,6 @@ sched.start()
 
 
 if __name__ == '__main__':
-    app.secret_key = secret_key
     #app.run(threaded = True, port=5000)
     app.run()
 

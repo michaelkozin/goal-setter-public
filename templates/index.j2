@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Franklin&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> 
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!--  https://getbootstrap.com/docs/3.4/getting-started/#download -->
+        <!--<link href="style.css" rel="stylesheet" type="text/css"> -->
+        <title>{% block title %}{% endblock %}</title>
+        <!--https://github.com/joshbuchea/HEAD#recommended-minimum-->
+    </head>
+    
+    <body>   
+      <nav class="navbar navbar-default col-sm-12">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for("default") }}">Goal Setter</a>
+          </div>
+          <ul class="nav navbar-nav">
+    {% if session["type"] == "guest" %}
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+              <li><a href="{{ url_for('edit_user') }}">Covert to member and save progress</a></li>
+    {% elif session['username'] %}    
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      {% if url_for(request.endpoint, user_name = session['username']) == url_for("edit_user", user_name = session['username']) %}
+              <li><a href="{{ url_for('default') }}">Back To Goals</a></li>
+      {% else %}
+              <li><a href="{{ url_for('edit_user') }}">Edit User Preferences</a></li>
+      {% endif %}
+    {% elif url_for(request.endpoint) == url_for("register") %}
+              <li><a href="{{ url_for('login') }}">Login</a></li>
+    {% elif url_for(request.endpoint) == url_for("login") %}
+              <li class="dropdown">
+              <a id="showcase-header" class="dropdown-toggle" data-toggle="dropdown">  Latest Goals </a>
+                <div class="dropdown-menu">
+                  {% block showcase %}{% endblock %}
+                </div>
+              </li>
+    {% endif %}
+          </ul>
+          <ul class="nav navbar-right">
+            <img src= {{ url_for('static', filename = 'target.jpg') }} alt="arrow-in-middle-of-target" title="arrow-in-middle-of-target" border="0" class="img-nav img-circle">
+          </ul>
+        </div>
+      </nav>
+        
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="alert alert-info max-width">
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    {% endwith %}
+      <div class="container-fluid text-center"> 
+    {% block body %}{% endblock %}
+      </div>
+      <div class="container-fluid text-center"> 
+    {% block content %}{% endblock %}
+      </div>
+
+      <footer class="container-fluid bg-4 text-cener">
+        <div>
+        Created by 
+        <a class="text-white" href="#">MK</a>
+        </div>
+      </footer>
+
+    </body>
+
+
+</html>
+

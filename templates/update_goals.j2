@@ -1,0 +1,48 @@
+{% extends 'index.j2' %}
+{% block title %} Goals {% endblock %}
+{% block content %}
+    <h1>Long Term Goal Setting Tool</h1>
+    <h2>{{ user_name }}</h2>
+
+    <section id = "goals">
+        <form action="/update_goals" method="POST">
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>id</th>
+                    <th>description</th>
+                    <th>start</th>
+                    <th>end</th>
+                    <th>subject</th>
+                </tr>
+                {% for goal in goals %}
+                <tr>
+                    <td>{{ goal.id }}</td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" name="description" value='{{ goal.description }}'>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" name="start" value="{{ goal.start }}">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" name="end" value="{{ goal.end }}">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" name="subject" value='{{ goal.subject }}'>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <button type="submit" class='btn btn-succes'>Submit changes</button>
+
+        </form>
+    </section>
+
+{% endblock %}

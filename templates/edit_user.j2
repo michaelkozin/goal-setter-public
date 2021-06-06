@@ -1,0 +1,25 @@
+{% extends 'index.j2' %}
+{% block title %} Edit User {% endblock %}
+{% block content %}
+<form action="/edit_user" method="POST">
+    <div id="edit-card">
+        <div class="form-group">
+            <label for="name">Username:</label>
+            <input type="text" name="name" id="name" value={{ session["username"] }}>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="first-password" id="password" value="password">
+        </div>
+        <div class="form-group">
+            <label for="password">Verify Password:</label>
+            <input type="password" name="second-password" id="password" value="password">
+        </div>
+        <div class="form-group">
+            <label for="mail">Email:</label>
+            <input type="mail" name ="mail" id="mail" value={{ session["mail"] }}>
+        </div>
+        <button type="submit" class="btn btn-primary btn-hover">Apply Changes</button>
+    </div>
+</form>
+{% endblock %}

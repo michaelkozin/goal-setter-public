@@ -1,0 +1,49 @@
+{% extends 'index.j2' %}
+{% block title %} Goals - session["username"] {% endblock %}
+{% block content %}
+
+    <section id="goals">
+        <h1 class="container py-5 text-center">Set and edit goals: {{ session["username"] }}</h1>
+
+        {% include "add_goal_table.j2" %}
+
+        <form action="/user_goals/{{ session['username'] }}" method="POST">
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Description (Private)</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Subject (Public)</th>
+                    <th>Progress</th>
+
+                    <th>
+                            <div class="btn-group-horizontal">
+                                <button type="submit" class="btn btn-primary btn-hover" name="btn" value="delete">delete</button>
+                                <button type="submit" class="btn btn-primary btn-hover" name="btn" value="edit">edit</button>
+                            </div>
+                    </th>
+                </tr>
+                {% for goal, diff in goals %}
+                <tr>
+                    <td>{{ goal.id }}</td>
+                    <td>{{ goal.description }}</td>
+                    <td>{{ goal.start }}</td>
+                    <td>{{ goal.end }}</td>
+                    <td>{{ goal.subject }}</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            aria-valuenow={{ diff }} aria-valuemin="0" aria-valuemax="100" style="width:{{ diff }}">
+                               <span> {{ diff }} </span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="checkbox" class="checkbox" name="action" value={{ goal.id }}></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,183 @@
+.div-basic div {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center; 
+}
+
+body {
+    display:flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+
+
+}
+
+
+#edit-card {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    width: 300px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    min-width: 200px;
+    padding: 10px;
+    border-radius: 12px;
+    justify-content: space;
+}
+
+label {
+  display: inline-block;
+  padding-right: 5px;
+}
+
+input:invalid+span:after {
+    content: '✖';
+    padding-left: 5px;
+}
+
+input:valid+span:after {
+    content: '✓';
+    padding-left: 5px;
+}
+
+.max-width {
+    max-width: 400px;
+}
+
+#login-card {
+    display: flex;
+    align-items: center;
+    width: 80rem;
+   /* min-height: 100%; */
+    flex-direction: row;
+    position: fixed; 
+    top: 50%;
+    left: 50%;  
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);   
+    max-width: 70rem;
+    max-height: 40rem;
+ /*   min-width: 100px;  */
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+   /* min-width: 200px; */
+    padding: 10px;
+    border-radius: 12px;
+    background-color: white;
+    justify-content: space-evenly;
+}
+
+#login-card-content {
+    flex-direction: column;
+}
+
+#login-card-image {
+    max-width: 30rem;
+    max-height: 30rem;
+}
+
+
+
+#login-card img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  
+}
+
+
+input {
+    width: 100%;
+    padding: 10px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 12px; 
+  }
+  
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.add-goal, nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+button {
+    transition-duration: 0.4s;
+    background-color: #4CAF50;
+    border-radius: 12px;
+}
+
+button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+#showcase {
+ /*   display: none; 
+    color: black;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    max-width: 300px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    min-width: 200px;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: white; */
+    transition-timing-function: ease-in-out;
+
+}
+
+.img-nav {
+    max-width: 50px;
+    max-height: 50px;
+    display: block; /* remove extra space below image */
+
+}
+
+#goals {
+    display: flex column;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+}
+
+h2, h1 {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+footer {
+    position: fixed; 
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #45637d;
+    color: white;
+    text-align: center;
+  }
+  

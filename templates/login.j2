@@ -1,0 +1,52 @@
+{% extends 'index.j2' %}
+{% block title %} Login {% endblock %}
+
+
+{% block showcase %}
+            <div id="showcase">
+                <table class="table table-condensed" id="table-showcase">
+                    <tr>
+                        <th>Subject</th>
+                        <th>Progress</th>
+                    </tr>
+                    {% for subj, diff in showcase %}
+                    <tr>
+                        <td>{{ subj }}</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                aria-valuenow={{ diff }} aria-valuemin="0" aria-valuemax="100" style="width:{{ diff }}">
+                                    <span> {{ diff }} </span>
+                                </div>
+                            </div>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+{% endblock %}
+
+{% block content %}
+            <form action="/login" method="POST">
+                <div class="container-fluid text-center align-items-center" id="login-card">
+                    <div id="login-card-content">
+                        <img id="login-card-image" src= {{ url_for('static', filename = 'target.jpg') }} alt="arrow-in-middle-of-target" title="arrow-in-middle-of-target" border="0" class="img-responsive">
+                    </div>
+                    <div class="card column" id="login-card-content">
+                        <h1>Goal Setting Tool</h1>
+                        <div class="form-group">
+                            <label for="name">Username:</label>
+                            <input type="text" name="name" id="name">
+                        </div>
+                        <div class="form-group column">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+                        <div class="buttons-container column">
+                            <button type="submit" class="btn btn-primary btn-hover">Connect</button>
+                            <button class="btn btn-primary btn-hover" type="button" onclick="window.location.href='{{ url_for('register') }}'">Register</button>
+                            <button class="btn btn-primary btn-hover" type="button" onclick="window.location.href='{{ url_for('guest') }}'">Guest</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+{% endblock %}

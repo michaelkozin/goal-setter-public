@@ -1,0 +1,5 @@
+#Don't want to upload these:
+remote-db-commands.py
+temp.py
+create_db.py
+goals.db

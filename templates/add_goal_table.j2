@@ -1,0 +1,26 @@
+{% block content %}
+    <section id = "goals">
+        <form method="POST">
+            <div class="add-goal div-basic">
+                <button type="submit" class="btn btn-primary btn-hover"  name="btn" value="add-goal">Add New Goal</button>
+                <div class="form-group">
+                    <label for="description">Descritpion:</label>
+                    <input type="text" name="description" value="Example: Create financial plan">
+                </div>
+                <div class="form-group">
+                    <label for="start">Start:</label>
+                    <input type="datetime-local" name="start" required>
+                </div>
+                <div class="form-group">
+                    <label for="end">End:</label>
+                    <input type="datetime-local" name="end" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <input type="text" name="subject" value="Example: Finance">
+                </div>
+            </div>
+        </form>
+    </section>
+
+{% endblock %}

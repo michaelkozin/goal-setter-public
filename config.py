@@ -1,0 +1,3 @@
+DEBUG = False
+TESTING = False
+TEMPLATES_AUTO_RELOAD = False

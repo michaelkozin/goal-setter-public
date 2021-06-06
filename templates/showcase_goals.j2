@@ -1,0 +1,23 @@
+{% block content %}
+    <div id="showcase">
+        <h2> Goal Showcase </h2>
+        <table class="table table-condensed">
+            <tr>
+                <th>Subject</th>
+                <th>Progress</th>
+            </tr>
+            {% for subj, diff in session["showcase"] %}
+            <tr>
+                <td>{{ subj }}</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                        aria-valuenow={{ diff }} aria-valuemin="0" aria-valuemax="100" style="width:{{ diff }}">
+                            <span> {{ diff }} </span>
+                        </div>
+                    </div>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

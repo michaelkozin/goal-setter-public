@@ -1,0 +1,19 @@
+{% extends 'index.j2' %}
+{% block title %} Registration {% endblock %}
+{% block content %}
+<form action="/register" method="POST">
+    <div class="form-group">
+        <label for="name">username:</label>
+        <input type="text" name="name" id="name">
+    </div>
+    <div class="form-group">
+        <label for="password">password:</label>
+        <input type="password" name="password" id="password">
+    </div>
+    <div class="form-group">
+        <label for="mail">email:</label>
+        <input type="mail" name ="mail" id="mail">
+    </div>
+    <button type="submit" class='btn btn-succes'>Register</button>
+</form>
+{% endblock %}

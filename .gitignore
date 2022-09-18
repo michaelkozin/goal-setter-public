@@ -3,3 +3,4 @@ remote-db-commands.py
 temp.py
 create_db.py
 goals.db
+secrets.py
